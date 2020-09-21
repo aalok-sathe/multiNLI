@@ -41,7 +41,7 @@ def evaluate_classifier_genre(classifier, eval_set, batch_size):
         count[genre] += 1.
 
         if genre != eval_set[i]['genre']:
-            print 'welp!'
+            print ('welp!')
 
     accuracy = {k: correct[k]/count[k] for k in correct}
 
@@ -69,7 +69,7 @@ def evaluate_classifier_bylength(classifier, eval_set, batch_size):
         count[genre] += 1.
 
         if genre != eval_set[i]['genre']:
-            print 'welp!'
+            print ('welp!')
 
     accuracy = {k: correct[k]/count[k] for k in correct}
 
