@@ -3,6 +3,10 @@ Script to generate a CSV file of predictions on the test data.
 """
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
+
+gpu_options = tf.GPUOptions(allow_growth=True)
+session = tf.InteractiveSession(config=tf.ConfigProto(gpu_options=gpu_options))
+
 #import tensorflow as tf
 import os
 import importlib

@@ -139,8 +139,9 @@ def predictions_kaggle(classifier, eval_set, batch_size, name):
 
     #predictions = sorted(predictions, key=lambda x: int(x[0]))
 
-    f = open( name + '_predictions.csv', 'wb')
-    w = csv.writer(f, delimiter = ',')
+    # f = open( name + '_predictions.csv', 'wb')
+    f = open( name + '_predictions.tsv', 'w')
+    w = csv.writer(f, delimiter = '\t')
     w.writerow(['pairID','gold_label'])
     for example in predictions:
         w.writerow(example)
