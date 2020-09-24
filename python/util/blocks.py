@@ -5,8 +5,9 @@ Functions and components that can be slotted into tensorflow models.
 TODO: Write functions for various types of attention.
 
 """
-
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+# import tensorflow as tf
 
 
 def length(sequence):
@@ -34,9 +35,9 @@ def biLSTM(inputs, dim, seq_len, name):
     """
     with tf.name_scope(name):
         with tf.variable_scope('forward' + name):
-            lstm_fwd = tf.contrib.rnn.LSTMCell(num_units=dim)
+            lstm_fwd = tf.keras.layers.LSTMCell(units=dim)
         with tf.variable_scope('backward' + name):
-            lstm_bwd = tf.contrib.rnn.LSTMCell(num_units=dim)
+            lstm_bwd = tf.keras.layers.LSTMCell(units=dim)
 
         hidden_states, cell_states = tf.nn.bidirectional_dynamic_rnn(cell_fw=lstm_fwd, cell_bw=lstm_bwd, inputs=inputs, sequence_length=seq_len, dtype=tf.float32, scope=name)
 
@@ -51,7 +52,7 @@ def LSTM(inputs, dim, seq_len, name):
     Same shape for cell states.
     """
     with tf.name_scope(name):
-        cell = tf.contrib.rnn.LSTMCell(num_units=dim)
+        cell = tf.keras.layers.LSTMCell(units=dim)
         hidden_states, cell_states = tf.nn.dynamic_rnn(cell, inputs=inputs, sequence_length=seq_len, dtype=tf.float32, scope=name)
 
     return hidden_states, cell_states

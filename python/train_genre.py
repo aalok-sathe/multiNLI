@@ -2,8 +2,9 @@
 Training script to train a model on a single genre from MultiNLI or on SNLI data.
 The logs created during this training scheme have genre-specific statistics.
 """
-
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+#import tensorflow as tf
 import os
 import importlib
 import random

@@ -3,8 +3,9 @@ Training script to train a model on MultiNLI and, optionally, on SNLI data as we
 The "alpha" hyperparamaters set in paramaters.py determines if SNLI data is used in training. 
 If alpha = 0, no SNLI data is used in training. If alpha > 0, then down-sampled SNLI data is used in training. 
 """
-
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+#import tensorflow as tf
 import os
 import importlib
 import random

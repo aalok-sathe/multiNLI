@@ -102,7 +102,7 @@ def load_parameters():
         #"hidden_embedding_dim": 50,
         "seq_length": args.seq_length,
         "keep_rate": args.keep_rate, 
-        "batch_size": 32,
+        "batch_size": 16,
         "learning_rate": args.learning_rate,
         "emb_train": args.emb_train,
         "alpha": args.alpha,

@@ -1,8 +1,9 @@
 """
 Script to generate a CSV file of predictions on the test data.
 """
-
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+#import tensorflow as tf
 import os
 import importlib
 import random
@@ -37,13 +38,16 @@ test_snli = load_nli_data(FIXED_PARAMETERS["test_snli"], snli=True)
 training_mnli = load_nli_data(FIXED_PARAMETERS["training_mnli"])
 dev_matched = load_nli_data(FIXED_PARAMETERS["dev_matched"])
 dev_mismatched = load_nli_data(FIXED_PARAMETERS["dev_mismatched"])
-test_matched = load_nli_data(FIXED_PARAMETERS["test_matched"])
-test_mismatched = load_nli_data(FIXED_PARAMETERS["test_mismatched"])
+#test_matched = load_nli_data(FIXED_PARAMETERS["test_matched"])
+#test_mismatched = load_nli_data(FIXED_PARAMETERS["test_mismatched"])
+
+test_matched = dev_matched#load_nli_data(FIXED_PARAMETERS["test_matched"])
+test_mismatched = dev_mismatched#load_nli_data(FIXED_PARAMETERS["test_mismatched"])
 
 dictpath = os.path.join(FIXED_PARAMETERS["log_path"], modname) + ".p"
 
 if not os.path.isfile(dictpath): 
-    print "No dictionary found!"
+    print ("No dictionary found!")
     exit(1)
 
 else:
